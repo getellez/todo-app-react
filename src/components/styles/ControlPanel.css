@@ -1,0 +1,29 @@
+.Control {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.Control__action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  cursor: pointer;
+}
+
+.Control__action p {
+  padding-left: 5px;
+  margin: 0;
+}
+
+.Control__action-add {
+  color: #009fb7;
+  font-weight: bold;
+}
+
+.Modal__input {
+  margin-bottom: 20px !important;
+}

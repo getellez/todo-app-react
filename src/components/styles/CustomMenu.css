@@ -1,0 +1,19 @@
+.Menu {
+  width: 100%;
+  background-color: #272727;
+  color: white;
+  padding: 20px 20px;
+  /* background-color: #272727; */
+  /* background-color: #696773; */
+  /* background-color: #009fb7; */
+  /* background-color: #eff1f3; */
+}
+
+.Menu__container {
+  display: flex;
+  justify-content: center;
+}
+
+.Menu__container-item {
+  margin-right: 20px;
+}

@@ -1,0 +1,11 @@
+.Home {
+  padding: 20px 0 0 0;
+}
+
+.Home__header {
+  text-align: center;
+}
+
+.Home__header-description {
+  color: #696773;
+}
