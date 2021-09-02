@@ -17,3 +17,7 @@
 .Menu__container-item {
   margin-right: 20px;
 }
+
+.Menu__container-item a {
+  color: white;
+}

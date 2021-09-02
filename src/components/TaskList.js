@@ -13,15 +13,30 @@ import Task from './Task';
 
 export default class TaskList extends Component {
 
-  state =  {
-    loading: false,
-    tasks: []
+  constructor(props){
+    super(props)
+    this.state =  {
+      loading: false,
+      tasks: []
+    }
   }
 
-  handleAddNewTask = (tasks) => {
+  updateVisibleTasks = (tasks) => {
     this.setState({
       tasks: tasks
     })
+  }
+  
+  toggleCompleteTask = (taskId) => {
+    const tasksList = JSON.parse(localStorage.getItem('tasks_list'))
+    for (const task of tasksList) {
+      if (task.id === taskId) {
+        task.completed = !task.completed
+      }
+    }
+    localStorage.setItem('tasks_list', JSON.stringify(tasksList))
+    this.updateVisibleTasks(tasksList)
+
   }
 
   componentDidMount = () => {
@@ -32,18 +47,17 @@ export default class TaskList extends Component {
         tasks: JSON.parse(tasksList)
       })
     }
-    
-
   }
 
   render() {
+    console.log("Se acaba de renderizar la lista de tareas.")
     return (
       <div className="List">
         <Row>
           <Col span={8} offset={8}>
             <div className="List__container">
               
-              <ControlPanel updateTasksList={this.handleAddNewTask} />
+              <ControlPanel updateTasksList={this.updateVisibleTasks} />
               
               {
                 this.state.tasks.length===0 ? <p className="empty">En estos momentos no hay tareas </p>
@@ -51,10 +65,8 @@ export default class TaskList extends Component {
                 this.state.tasks.map((task) => {
                   return <Task 
                   key={task.id}
-                  status={task.completed}
-                  date={task.date}
-                  title={task.title} 
-                  description={task.description} />
+                  taskData={task}
+                  />
                 })
               }
 

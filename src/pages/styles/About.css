@@ -1,0 +1,14 @@
+.Header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px;
+}
+
+.Header__picture {
+  margin-right: 50px;
+}
+
+.Header__info {
+  text-align: center;
+}

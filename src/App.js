@@ -2,22 +2,26 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 // Component
-import Home from './pages/Home';
 import CustomLayout from './components/CustomLayout';
+import Home from './pages/Home';
+import About from './pages/About'
 
 
 // Assets
 import 'antd/dist/antd.css';
+import { routes } from './config';
 
+const { home, about } = routes
 
 function App() {
   return (
     <BrowserRouter>
-      <Switch>
-        <CustomLayout>
-          <Route exact path="/" component={Home} />
-        </CustomLayout>
-      </Switch>
+      <CustomLayout>
+        <Switch>  
+            <Route exact path={home} component={Home} />
+            <Route exact path={about} component={About} />
+        </Switch>
+      </CustomLayout>
     </BrowserRouter>
   );
 }

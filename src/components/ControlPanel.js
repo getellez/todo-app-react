@@ -18,7 +18,12 @@ export default class ControlPanel extends Component {
   }
   handleOpenModal = (e) => {
     this.setState({
-      isModalActive: true
+      isModalActive: true,
+      task: {
+        ...this.state.task,
+        title: '',
+        description: ''
+      }
     })
   }
 
@@ -35,6 +40,20 @@ export default class ControlPanel extends Component {
       }
     })
   }
+  handleShowAllTasks = () => {
+    const tasksList = JSON.parse(localStorage.getItem('tasks_list'))
+    this.props.updateTasksList(tasksList)
+  }
+  handleShowCompletedTasks = () => {
+    const tasksList = JSON.parse(localStorage.getItem('tasks_list'))
+    const completedTasks = tasksList.filter(task => task.completed === true)
+    this.props.updateTasksList(completedTasks)
+  }
+  handleShowPendingTasks = () => {
+    const tasksList = JSON.parse(localStorage.getItem('tasks_list'))
+    const pendingTasks = tasksList.filter(task => task.completed === false)
+    this.props.updateTasksList(pendingTasks)
+  }
 
   handleDeleteAll = () => {
     localStorage.removeItem('tasks_list')
@@ -47,7 +66,6 @@ export default class ControlPanel extends Component {
     
     const { task } = this.state;
     const newTask = {...task, id: uuidv4()}
-    console.log("newTask >", newTask);
     
     if (!tasksList) {
       localStorage.setItem("tasks_list", JSON.stringify([newTask]))
@@ -75,7 +93,7 @@ export default class ControlPanel extends Component {
               Add new task
             </p>
           </div>
-          <div className="Control__action">
+          <div className="Control__action" onClick={this.handleShowCompletedTasks}>
             <div>
               <CheckCircleTwoTone /> 
             </div>
@@ -83,7 +101,7 @@ export default class ControlPanel extends Component {
               Completed
             </p>
           </div>
-          <div className="Control__action">
+          <div className="Control__action" onClick={this.handleShowPendingTasks}>
             <div>
               <MinusCircleTwoTone />
             </div>
@@ -93,7 +111,7 @@ export default class ControlPanel extends Component {
               </p>
             </div>
           </div>
-          <div className="Control__action">
+          <div className="Control__action" onClick={this.handleShowAllTasks}>
             <div>
               <ContainerTwoTone />
             </div>
