@@ -1,6 +1,7 @@
 module.exports = {
   routes: {
-    home: '/',
+    repo: '/todo-app-react/',
+    home: '/home',
     about: '/about'
   }
 }
