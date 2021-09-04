@@ -66,6 +66,7 @@ export default class TaskList extends Component {
                   return <Task 
                   key={task.id}
                   taskData={task}
+                  updateVisibleTasks={this.updateVisibleTasks}
                   />
                 })
               }

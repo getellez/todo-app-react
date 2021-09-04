@@ -52,6 +52,13 @@ export default class Task extends Component {
     }
   }
 
+  handleDeleteTask = () => {
+    let tasksList = JSON.parse(localStorage.getItem('tasks_list'))
+    tasksList = tasksList.filter(task => task.id !== this.state.data.id)
+    localStorage.setItem('tasks_list', JSON.stringify(tasksList))
+    this.props.updateVisibleTasks(tasksList)
+  }
+
   handleOpenModal = () => {
     this.setState({ isModalVisible: true })
   }
@@ -100,7 +107,7 @@ export default class Task extends Component {
           actions={[
             statusIcon,
             <EditOutlined key="edit" onClick={this.handleEditTask} />,
-            <DeleteOutlined key="delete" />,
+            <DeleteOutlined key="delete"  onClick={this.handleDeleteTask}/>,
           ]}>
 
           <div>
