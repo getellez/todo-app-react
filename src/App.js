@@ -11,13 +11,14 @@ import About from './pages/About'
 import 'antd/dist/antd.css';
 import { routes } from './config';
 
-const { home, about, repo } = routes
+const { home, about, repo, root } = routes
 
 function App() {
   return (
     <BrowserRouter>
       <CustomLayout>
         <Switch>  
+            <Route exact path={root} component={Home} />
             <Route exact path={repo} component={Home} />
             <Route exact path={home} component={Home} />
             <Route exact path={about} component={About} />
