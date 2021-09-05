@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Col, Row } from 'antd';
 
 // Components
 import ControlPanel from './ControlPanel';
@@ -53,8 +52,6 @@ export default class TaskList extends Component {
     console.log("Se acaba de renderizar la lista de tareas.")
     return (
       <div className="List">
-        <Row>
-          <Col span={8} offset={8}>
             <div className="List__container">
               
               <ControlPanel updateTasksList={this.updateVisibleTasks} />
@@ -72,8 +69,6 @@ export default class TaskList extends Component {
               }
 
             </div>
-          </Col>
-        </Row>
       </div>
     )
   }

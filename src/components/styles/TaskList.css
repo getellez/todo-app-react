@@ -1,4 +1,6 @@
-
+.List__container {
+  padding: 0 10px;
+}
 
 .empty {
   text-align: center;
