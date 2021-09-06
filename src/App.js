@@ -5,7 +5,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import CustomLayout from './components/CustomLayout';
 import Home from './pages/Home';
 import About from './pages/About'
-
+import NotFound from './pages/NotFound'
 
 // Assets
 import 'antd/dist/antd.css';
@@ -22,6 +22,7 @@ function App() {
             <Route exact path={repo} component={Home} />
             <Route exact path={home} component={Home} />
             <Route exact path={about} component={About} />
+            <Route component={NotFound} />
         </Switch>
       </CustomLayout>
     </BrowserRouter>
